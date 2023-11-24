@@ -14,7 +14,6 @@ export default function CoffeeCollection() {
       )
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           setCoffees(data);
           setfilteredCoffees(data);
         })
@@ -38,6 +37,11 @@ export default function CoffeeCollection() {
   return (
     <div className="bg-[#1B1D1F] rounded-xl width-90 p-8">
       <CoffeeHeader category={category} setCategory={setCategory} />
+      {filteredCoffees.length === 0 && (
+        <p className="text-center text-2xl mt:8 text-slate-300">
+          Loading Coffees...
+        </p>
+      )}
       <CoffeeList coffees={filteredCoffees} />
     </div>
   );
